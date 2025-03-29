@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="introScreen">
+        <div class="InnerIntro">
+            <p class="introText">Welcome to</p>
+            <p class="introTitle">Draconic Heights</p>
+            <p class="introHint">Click anywhere to begin</p>
+        </div>
+    </div>
+    
+    <div class="GameOver">
+        <div class="gameOverContent">
+            <p class="gameOverTitle">Game Over</p>
+            <p class="gameOverHint">Click anywhere to restart</p>
+        </div>
+    </div>
+    
+    <div class="winnerScreen">
+        <div class="winnerContent">
+            <p class="winnerTitle">Victory!</p>
+            <p class="winnerSubtitle">You've conquered Draconic Heights!</p>
+            <p class="winnerHint">Click anywhere to play again</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="controlPanel">
+            <div class="scoreSection">
+                <label>Highest Score</label>
+                <div class="scoreDisplay" id="highestScore">0</div>
+            </div>
+            
+            <div class="scoreSection">
+                <label>Current Score</label>
+                <div class="scoreDisplay" id="currentScore">0</div>
+            </div>
+
+            <button class="startButton">Start Game</button>
+        </div>
+
+        <div class="gameGrid">
+            <div class="dragon"></div>
+            <div class="gridContainer">
+                <div class="stage">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="stage">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="stage">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="stage">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="stage">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="stage">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+            </div>
+            <div class="gameTitleBottom">Draconic Heights</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

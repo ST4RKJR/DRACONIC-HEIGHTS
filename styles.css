@@ -1,0 +1,419 @@
+:root {
+    --background-color: #1a1f2e;
+    --panel-color: #242b3d;
+    --border-color: #2d364a;
+    --text-color: #ffffff;
+    --accent-color: #50fa7b;
+    --cell-color: #1e2534;
+    --button-hover: #2d364a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    position: relative;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('game_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    filter: brightness(1.3);
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.controlPanel {
+    background-color: var(--panel-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.modeSwitch {
+    display: flex;
+    gap: 0.5rem;
+    background-color: var(--background-color);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.modeSwitch button {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    color: var(--text-color);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.modeSwitch button.active {
+    background-color: var(--panel-color);
+}
+
+.betSection, .difficultySection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    color: #8892b0;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.betInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.currency {
+    position: absolute;
+    right: 100px;
+    color: #8892b0;
+}
+
+.multipliers {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+}
+
+.multipliers button {
+    padding: 4px 8px;
+    background-color: var(--button-hover);
+    border: none;
+    color: var(--text-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.startButton {
+    background-color: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+}
+
+.gameGrid {
+    flex: 1;
+    position: relative;
+    background-color: var(--panel-color);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.dragon {
+    position: absolute;
+    top: -175px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 480px;
+    height: 300px;
+    background-image: url('4dragon.png');
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    z-index: 10;
+}
+
+.gridContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 8px;
+}
+
+.stage {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tile {
+    width: 100%;
+    aspect-ratio: 2/1;
+    background-color: var(--cell-color);
+    border-radius: 4px;
+    position: relative;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='50' viewBox='0 0 100 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 25L25 0L50 25L25 50L0 25Z M50 25L75 0L100 25L75 50L50 25Z' fill='none' stroke='%232d364a' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s ease;
+}
+
+.tile:hover {
+    transform: scale(1.02);
+}
+
+.tile.active {
+    border: 2px solid var(--accent-color);
+    cursor: pointer;
+}
+
+.tile.safe {
+    background-color: transparent;
+    border: 2px solid rgba(80, 250, 123, 0.7); 
+    transform: scale(1);
+    background-image: url('Dragon_egg.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tile.unsafe {
+    background-color: rgba(255, 68, 68, 0.5); 
+    border: 2px solid rgba(255, 68, 68, 0.7); 
+    transform: scale(1);
+    background-image: url('skull.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tile.safe:hover,
+.tile.unsafe:hover {
+    transform: scale(1);
+    cursor: not-allowed;
+}
+
+.scoreSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.scoreDisplay {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Intro Screen Styles */
+.introScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 12, 20, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.InnerIntro {
+    text-align: center;
+    transform: translateY(-50px);
+}
+
+.introText {
+    font-size: 4rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.introTitle {
+    font-size: 7.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 3rem;
+    text-shadow: 0 0 15px rgba(80, 250, 123, 0.5);
+}
+
+.introHint {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    opacity: 0.6;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}
+
+.gameActive .introScreen {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.GameOver {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.8); 
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none; 
+}
+
+.gameOverContent {
+    text-align: center;
+}
+
+.gameOverTitle {
+    font-size: 9rem; 
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.gameOverHint {
+    font-size: 2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+.gameOver .GameOver {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.gameTitleBottom {
+    position: absolute;
+    bottom: -100px;
+    left: -20%;
+    width: 100%;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    opacity: 0.7;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    z-index: 5;
+    pointer-events: none; 
+}
+
+.winnerScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(80, 250, 123, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.winnerContent {
+    text-align: center;
+}
+
+.winnerTitle {
+    font-size: 20rem;
+    font-weight: bold;
+    color: gold;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+.winnerSubtitle {
+    font-size: 3.5rem;
+    color: gold;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.winnerHint {
+    font-size: 2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+.gameWinner .winnerScreen {
+    opacity: 1;
+    pointer-events: auto;
+}
