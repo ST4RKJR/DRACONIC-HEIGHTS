@@ -7,7 +7,6 @@ class DragonTower {
         this.isGameActive = false;
         this.grid = [];
 
-        // DOM Elements
         this.gridCells = document.querySelectorAll('.tile');
         this.startButton = document.querySelector('.startButton');
         this.currentScoreElement = document.getElementById('currentScore');
